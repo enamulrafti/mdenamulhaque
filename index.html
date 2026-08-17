@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md Enamul Haque — Portfolio</title>
+<meta name="description" content="Md Enamul Haque — Computer Vision & Deep Learning Researcher">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --bg:            #f5f5f5;   /* page background, per request (not pure white) */
+  --bg-alt:        #eeeeec;   /* alternating section background */
+  --card:          #ffffff;   /* card surfaces */
+  --ink:           #1c1c1e;   /* primary text */
+  --ink-soft:      #55575c;   /* secondary text */
+  --line:          #dcdcda;   /* hairline borders */
+  --accent:        #1d3557;   /* deep ink-blue — primary accent */
+  --accent-2:      #7c8f6e;   /* muted sage — secondary accent (vision/attention motif) */
+  --accent-soft:   #eef1ea;   /* tint of accent-2 for chips/badges */
+  --radius:        4px;
+  --maxw:          1040px;
+  --font-display:  'Fraunces', Georgia, serif;
+  --font-body:     'Inter', -apple-system, sans-serif;
+  --font-mono:     'JetBrains Mono', monospace;
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-body);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+}
+a{color:inherit; text-decoration:none;}
+img{max-width:100%; display:block;}
+section{padding:88px 24px;}
+.section-alt{background:var(--bg-alt);}
+.wrap{max-width:var(--maxw); margin:0 auto;}
+.eyebrow{
+  font-family:var(--font-mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--accent-2); display:flex; align-items:center; gap:10px; margin-bottom:14px;
+}
+.eyebrow::before{content:""; width:22px; height:1px; background:var(--accent-2);}
+h1,h2,h3{font-family:var(--font-display); font-weight:600; letter-spacing:-0.01em; color:var(--ink);}
+.section-title{font-size:clamp(26px,3.4vw,36px); margin-bottom:40px;}
+p{color:var(--ink-soft);}
+
+/* ---------- Nav ---------- */
+.navbar{
+  position:sticky; top:0; z-index:100;
+  background:rgba(245,245,245,0.86); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:var(--maxw); margin:0 auto; padding:16px 24px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.nav-logo{font-family:var(--font-mono); font-weight:500; font-size:14px; letter-spacing:.03em;}
+.nav-logo span{color:var(--accent-2);}
+.nav-links{display:flex; gap:28px; list-style:none;}
+.nav-links a{
+  font-size:13.5px; font-weight:500; color:var(--ink-soft);
+  padding-bottom:2px; border-bottom:1px solid transparent; transition:.2s;
+}
+.nav-links a:hover, .nav-links a:focus-visible{color:var(--accent); border-bottom-color:var(--accent-2); outline:none;}
+.nav-toggle{display:none; background:none; border:none; font-size:22px; cursor:pointer; color:var(--ink);}
+
+@media (max-width:760px){
+  .nav-links{
+    position:fixed; top:57px; left:0; right:0; background:var(--bg);
+    flex-direction:column; gap:0; border-bottom:1px solid var(--line);
+    max-height:0; overflow:hidden; transition:max-height .25s ease;
+  }
+  .nav-links.open{max-height:400px;}
+  .nav-links a{display:block; padding:14px 24px; border-bottom:1px solid var(--line);}
+  .nav-toggle{display:block;}
+}
+
+/* ---------- Hero ---------- */
+.hero{
+  padding:100px 24px 90px;
+  position:relative; overflow:hidden;
+}
+.hero::before{
+  /* signature element: subtle attention-map grid, nodding to attention-mechanism research */
+  content:""; position:absolute; inset:0; opacity:.5; pointer-events:none;
+  background-image:
+    radial-gradient(circle at 82% 18%, rgba(29,53,87,0.07), transparent 42%),
+    radial-gradient(circle at 92% 40%, rgba(124,143,110,0.10), transparent 38%);
+}
+.hero-inner{
+  max-width:var(--maxw); margin:0 auto;
+  display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center;
+  position:relative;
+}
+@media (max-width:820px){ .hero-inner{grid-template-columns:1fr;} }
+
+.hero-name{font-size:clamp(34px,5.2vw,54px); line-height:1.05; margin-bottom:14px;}
+.hero-role{font-size:17px; color:var(--accent); font-weight:600; margin-bottom:18px;}
+.hero-desc{max-width:52ch; font-size:15.5px; margin-bottom:28px;}
+.hero-tags{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:32px;}
+.tag{
+  font-family:var(--font-mono); font-size:11.5px; padding:5px 10px;
+  background:var(--accent-soft); color:var(--accent); border-radius:var(--radius);
+  border:1px solid rgba(29,53,87,0.08);
+}
+.hero-cta{display:flex; gap:14px; flex-wrap:wrap;}
+.btn{
+  font-size:14px; font-weight:600; padding:11px 20px; border-radius:var(--radius);
+  border:1px solid var(--accent); transition:.2s;
+}
+.btn-primary{background:var(--accent); color:#fff;}
+.btn-primary:hover{background:#142642;}
+.btn-ghost{background:transparent; color:var(--accent);}
+.btn-ghost:hover{background:var(--accent-soft);}
+
+.hero-photo-wrap{
+  position:relative; justify-self:center; width:min(300px,80%);
+}
+.hero-photo{
+  width:100%; aspect-ratio:1/1.08; object-fit:cover;
+  border-radius:6px; border:1px solid var(--line);
+  box-shadow:0 30px 60px -30px rgba(29,53,87,0.35);
+}
+.hero-photo-frame{
+  position:absolute; inset:14px -14px -14px 14px; z-index:-1;
+  border:1px solid var(--accent-2); border-radius:6px;
+}
+
+/* ---------- About ---------- */
+.about-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px;}
+@media (max-width:760px){.about-grid{grid-template-columns:1fr;}}
+.about-text p{margin-bottom:14px; font-size:15px;}
+.about-text strong{color:var(--ink);}
+.stat-list{display:flex; flex-direction:column; gap:0; border-top:1px solid var(--line);}
+.stat-row{
+  display:flex; justify-content:space-between; align-items:baseline;
+  padding:16px 0; border-bottom:1px solid var(--line);
+}
+.stat-row .num{font-family:var(--font-display); font-size:26px; color:var(--accent);}
+.stat-row .label{font-size:13px; color:var(--ink-soft); text-align:right; max-width:60%;}
+
+/* ---------- Research interests ---------- */
+.interest-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+@media (max-width:760px){.interest-grid{grid-template-columns:1fr;}}
+.interest-card{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  padding:24px; border-top:2px solid var(--accent-2);
+}
+.interest-card h3{font-size:16px; margin-bottom:8px; font-family:var(--font-body); font-weight:700;}
+.interest-card p{font-size:13.5px;}
+
+/* ---------- Publications ---------- */
+.pub-list{display:flex; flex-direction:column; gap:0;}
+.pub{
+  display:grid; grid-template-columns:56px 1fr; gap:18px;
+  padding:22px 0; border-bottom:1px solid var(--line);
+}
+.pub:first-child{border-top:1px solid var(--line);}
+.pub-index{font-family:var(--font-mono); font-size:13px; color:var(--accent-2); padding-top:2px;}
+.pub-title{font-size:15.5px; font-weight:600; margin-bottom:6px; color:var(--ink);}
+.pub-meta{font-size:13px; color:var(--ink-soft); margin-bottom:8px;}
+.pub-status{
+  display:inline-block; font-family:var(--font-mono); font-size:10.5px; letter-spacing:.04em;
+  padding:3px 8px; border-radius:3px; margin-right:8px; text-transform:uppercase;
+}
+.status-published{background:#e7efe4; color:#3f6b32;}
+.status-review{background:#f3ecd9; color:#8a6a1f;}
+.pub-links a{font-size:12.5px; color:var(--accent); font-weight:600; margin-right:14px;}
+.pub-links a:hover{text-decoration:underline;}
+
+/* ---------- Experience (timeline) ---------- */
+.timeline{position:relative; padding-left:28px; border-left:1px solid var(--line);}
+.tl-item{position:relative; padding-bottom:36px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-item::before{
+  content:""; position:absolute; left:-33px; top:4px; width:9px; height:9px;
+  border-radius:50%; background:var(--accent-2); border:2px solid var(--bg);
+  box-shadow:0 0 0 1px var(--accent-2);
+}
+.tl-date{font-family:var(--font-mono); font-size:11.5px; color:var(--accent-2); margin-bottom:6px;}
+.tl-role{font-size:16px; font-weight:700; margin-bottom:2px;}
+.tl-org{font-size:13.5px; color:var(--ink-soft); margin-bottom:10px;}
+.tl-item ul{padding-left:18px; font-size:13.5px; color:var(--ink-soft);}
+.tl-item li{margin-bottom:4px;}
+
+/* ---------- Skills ---------- */
+.skill-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:26px 40px;}
+@media (max-width:760px){.skill-grid{grid-template-columns:1fr;}}
+.skill-cat h3{font-size:13px; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.06em; color:var(--accent); margin-bottom:10px;}
+.chip-row{display:flex; flex-wrap:wrap; gap:7px;}
+.chip{
+  font-size:12.5px; padding:6px 11px; background:var(--card); border:1px solid var(--line);
+  border-radius:20px; color:var(--ink-soft);
+}
+
+/* ---------- Awards ---------- */
+.award-list{display:flex; flex-direction:column; gap:14px;}
+.award{display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-bottom:1px solid var(--line); font-size:14px;}
+.award .a-name{color:var(--ink); font-weight:600;}
+.award .a-date{font-family:var(--font-mono); font-size:12px; color:var(--ink-soft); white-space:nowrap;}
+
+/* ---------- Footer / contact ---------- */
+.contact-wrap{
+  display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-end; gap:24px;
+}
+.contact-links{display:flex; gap:22px; flex-wrap:wrap;}
+.contact-links a{font-size:14px; font-weight:600; color:var(--accent);}
+.contact-links a:hover{text-decoration:underline;}
+footer{
+  padding:28px 24px; text-align:center; font-size:12px; color:var(--ink-soft);
+  border-top:1px solid var(--line);
+}
+
+.back-to-top{position:fixed; bottom:22px; right:22px; width:38px; height:38px; border-radius:50%;
+  background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:.25s; box-shadow:0 8px 20px rgba(29,53,87,.3);}
+.back-to-top.show{opacity:1; pointer-events:auto;}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo">M.E.HAQUE<span>.</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">Prospective PhD Applicant</div>
+      <h1 class="hero-name">Md Enamul Haque</h1>
+      <div class="hero-role">Lecturer, Dept. of CSE, United International University</div>
+      <p class="hero-desc">
+        I work on attention-based deep learning for medical imaging and computer vision —
+        segmentation, detection, classification, and vision-language(-action) models —
+        with an emphasis on efficient, interpretable models for resource-constrained deployment.
+      </p>
+      <div class="hero-tags">
+        <span class="tag">Medical Image Segmentation</span>
+        <span class="tag">Object Detection</span>
+        <span class="tag">Vision-Language Models</span>
+        <span class="tag">Attention Mechanisms</span>
+        <span class="tag">Model Compression</span>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#publications">View Publications</a>
+        <a class="btn btn-ghost" href="mailto:mhaque182055@bscse.uiu.ac.bd">Get in Touch</a>
+        <a class="btn btn-ghost" href="/cv.pdf">Download CV</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-frame"></div>
+      <!-- Replace src below with your photo, e.g. assets/photo.jpg -->
+      <img class="hero-photo" src="portfolio/assets/p1.jpg" alt="Portrait of Md Enamul Haque">
+    </div>
+  </div>
+</header>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-text">
+      <div class="eyebrow">About</div>
+      <h2 class="section-title">Background</h2>
+      <p>I am a <strong>Lecturer</strong> in the Department of Computer Science and Engineering at
+      United International University (UIU), Dhaka, Bangladesh, where I have taught 13 distinct
+      courses across 8 trimesters since 2024. I completed my B.Sc. in CSE at UIU with a CGPA of
+      3.94/4.00 (Top 1%, Summa Cum Laude).</p>
+      <p>My research centers on <strong>attention-based deep learning</strong> for medical imaging
+      and computer vision, spanning disease detection, multi-task food/nutrition estimation,
+      biometric classification, and — most recently — <strong>efficient vision-language models</strong>.
+      I am applying to PhD programs to pursue this line of work further, with a focus on efficient
+      and interpretable vision-language-action systems for real-world, resource-constrained deployment.</p>
+    </div>
+    <div class="stat-list">
+      <div class="stat-row"><span class="num">8</span><span class="label">Peer-reviewed / under-review publications</span></div>
+      <div class="stat-row"><span class="num">3.94</span><span class="label">Undergraduate CGPA (Top 1%, out of 4.00)</span></div>
+      <div class="stat-row"><span class="num">13</span><span class="label">Distinct courses taught since 2024</span></div>
+      <div class="stat-row"><span class="num">2+</span><span class="label">Years as research assistant, IAR Lab, UIU</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESEARCH INTERESTS ================= -->
+<section id="research" class="section-alt">
+  <div class="wrap">
+    <div class="eyebrow">Focus Areas</div>
+    <h2 class="section-title">Research Interests</h2>
+    <div class="interest-grid">
+      <div class="interest-card">
+        <h3>Vision-Language(-Action) Models</h3>
+        <p>Efficient and interpretable multimodal architectures, including attention pruning
+        for energy-efficient inference.</p>
+      </div>
+      <div class="interest-card">
+        <h3>Medical Imaging & Diagnostics</h3>
+        <p>Attention-based CNNs for disease detection (e.g., monkeypox, fish pathogens) and
+        clinical decision support.</p>
+      </div>
+      <div class="interest-card">
+        <h3>Model Compression & XAI</h3>
+        <p>Efficiency-oriented architectures and explainable AI for deployment under
+        real-world compute constraints.</p>
+      </div>
+      <div class="interest-card">
+        <h3>Multi-Task Segmentation & Classification</h3>
+        <p>Joint instance segmentation, fine-grained classification, and regression, e.g.
+        BanglaFoodNet on the FoodBD dataset.</p>
+      </div>
+      <div class="interest-card">
+        <h3>Object Detection</h3>
+        <p>Hybrid detector backbones (YOLOv8 + EfficientNet) with attention for challenging
+        conditions such as adverse weather.</p>
+      </div>
+      <div class="interest-card">
+        <h3>Health Informatics</h3>
+        <p>Non-invasive prediction from food-intake and activity data, including
+        dataset construction (FoodBD).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PUBLICATIONS ================= -->
+<!--
+  TO ADD A NEW PUBLICATION: copy one .pub block inside #pubList and edit its contents.
+  Set class on .pub-status to "status-published" or "status-review".
+-->
+<section id="publications">
+  <div class="wrap">
+    <div class="eyebrow">Selected Work</div>
+    <h2 class="section-title">Publications</h2>
+    <div class="pub-list" id="pubList">
+
+      <div class="pub">
+        <div class="pub-index">08</div>
+        <div>
+          <div class="pub-title">Beyond FLOPs: Deferral-Based Attention Pruning for Real Energy-Efficient Vision-Language Models</div>
+          <div class="pub-meta">Rahman, M., Nokib, M. N. H., Rafi, M. M., Moon, J. T., Fiaza, J., <strong>Haque, M. E.</strong>, & Islam, M. M. — ICCIT 2026</div>
+          <span class="pub-status status-review">Under Review</span>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-index">07</div>
+        <div>
+          <div class="pub-title">BanglaFoodNet: A Multi-Task Deep Learning Framework for Joint Food Instance Segmentation, Fine-Grained Classification, and Glycemic-Load-Aware Nutrition Estimation</div>
+          <div class="pub-meta"><strong>Haque, M. E.</strong>, Ahmed, B.M., Huq, A.K.O. et al. — Computers in Biology and Medicine (Elsevier)</div>
+          <span class="pub-status status-review">Under Review</span>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-index">06</div>
+        <div>
+          <div class="pub-title">MSDA-NET: Multi-Scale Dual Attention Network for Monkeypox Disease Detection</div>
+          <div class="pub-meta">Das, A., <strong>Haque, M. E.</strong>, Alam, M. N., Shanto, M. M. H., Huda, M. N., & Kabir, M. H. (2026) — IEEE Access</div>
+          <span class="pub-status status-review">Under Review</span>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-index">05</div>
+        <div>
+          <div class="pub-title">Weather-Aware Vehicle Detection Using Hybrid YOLOv8 with EfficientNet and Attention Mechanisms</div>
+          <div class="pub-meta">Das, A., <strong>Haque, M. E.</strong>, Rahman, M. R., & Islam, M. M. — Image and Vision Computing (Elsevier)</div>
+          <span class="pub-status status-review">Under Review</span>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-index">04</div>
+        <div>
+          <div class="pub-title">FoodBD: A Polygon-Annotated Meal Image Dataset of Bangladeshi Cuisines with Visual and Nutritional Labels</div>
+          <div class="pub-meta">Ahmed, B.M., <strong>Haque, M.E.</strong>, Huq, A.K.O. et al. — BMC Research Notes, 19, 17 (2026)</div>
+          <span class="pub-status status-published">Published</span>
+          <div class="pub-links"><a href="https://doi.org/10.1186/s13104-025-07583-8" target="_blank" rel="noopener">DOI →</a></div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-index">03</div>
+        <div>
+          <div class="pub-title">Nile Tilapia Pathogens Detection Using CNN Model Infused with Efficient Channel Attention Mechanism</div>
+          <div class="pub-meta"><strong>M. E. Haque</strong>, A. Das, M. N. Huda and M. R. Ahmed — ICCIT 2025, Cox's Bazar, Bangladesh, pp. 4747–4752</div>
+          <span class="pub-status status-published">Published</span>
+          <div class="pub-links"><a href="https://doi.org/10.1109/ICCIT68739.2025.11491097" target="_blank" rel="noopener">DOI →</a></div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-index">02</div>
+        <div>
+          <div class="pub-title">Biometric Finger Vein Classification using Finger Inferred Images with ResNet50 and Attention Mechanisms</div>
+          <div class="pub-meta">M. F. Utsho, <strong>M. E. Haque</strong> and R. Rahman — ICCIT 2024, Cox's Bazar, Bangladesh, pp. 2940–2945</div>
+          <span class="pub-status status-published">Published</span>
+          <div class="pub-links"><a href="https://doi.org/10.1109/ICCIT64611.2024.11021806" target="_blank" rel="noopener">DOI →</a></div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-index">01</div>
+        <div>
+          <div class="pub-title">Human Monkeypox Disease Detection Using Deep Learning and Attention Mechanisms</div>
+          <div class="pub-meta"><strong>M. E. Haque</strong>, M. R. Ahmed, R. S. Nila and S. Islam — ICCIT 2022, Cox's Bazar, Bangladesh, pp. 1069–1073</div>
+          <span class="pub-status status-published">Published</span>
+          <div class="pub-links"><a href="https://doi.org/10.1109/ICCIT57492.2022.10055870" target="_blank" rel="noopener">DOI →</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience" class="section-alt">
+  <div class="wrap">
+    <div class="eyebrow">Research Experience</div>
+    <h2 class="section-title">Experience Timeline</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">Dec 2025 – Feb 2026</div>
+        <div class="tl-role">BanglaFoodNet — Multi-Task Deep Learning Framework</div>
+        <div class="tl-org">Institute for Advanced Research (IAR) Lab, UIU</div>
+        <ul>
+          <li>Designed a Swin-Tiny + CBAM-FPN framework for joint segmentation, classification, and nutrition estimation.</li>
+          <li>Proposed GL-aware Huber loss and uncertainty-based multi-task loss weighting.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Mar 2023 – Nov 2025</div>
+        <div class="tl-role">Research Assistant — Blood Glucose Prediction from Food Intake & Activity</div>
+        <div class="tl-org">IAR Lab, UIU · Grant ID UIU/IAR/01/2021/SE/11</div>
+        <ul>
+          <li>Built FoodBD: 3,523 images, 67 food categories, polygon annotations.</li>
+          <li>Curated expert nutritional labels (carbs, protein, fat, fiber, calorie, glycemic load) for 1,837 images.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">May 2018 – Oct 2022</div>
+        <div class="tl-role">B.Sc. in Computer Science & Engineering</div>
+        <div class="tl-org">United International University · CGPA 3.94/4.00, Summa Cum Laude</div>
+        <ul>
+          <li>Final year project: MixAugmentor and RePair — text and image data augmentation.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TEACHING ================= -->
+<!--
+  Course-tracking table: one <tr> per trimester. Add rows to extend.
+  See the note in chat about whether to include this section publicly.
+-->
+<section id="teaching">
+  <div class="wrap">
+    <div class="eyebrow">Teaching</div>
+    <h2 class="section-title">Teaching Experience</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">Nov 2025 – Present</div>
+        <div class="tl-role">Lecturer, Dept. of CSE</div>
+        <div class="tl-org">United International University (promoted from Instructor, Nov 2025)</div>
+        <ul>
+          <li>13 distinct courses across 8 trimesters (Spring 2024 – Summer 2026), spanning core CS theory and systems.</li>
+          <li>Data Structures & Algorithms I/II, Database Management Systems, OS Lab, Computer Networks Lab, OOP, Discrete Math, Digital Logic Design, System Analysis & Design.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Nov 2022 – Dec 2023</div>
+        <div class="tl-role">Instructor</div>
+        <div class="tl-org">Dept. of CS & Technology, Educity-Bangladesh</div>
+        <ul>
+          <li>Delivered academic and industry-oriented instruction to Diploma-in-Engineering students.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Oct 2021 – Oct 2022</div>
+        <div class="tl-role">Undergraduate Assistant</div>
+        <div class="tl-org">Dept. of CSE, UIU</div>
+        <ul>
+          <li>Structured Programming Lab, Microprocessor/Microcontroller & Interfacing Lab, Computer Networks Lab, Electronics Lab.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills" class="section-alt">
+  <div class="wrap">
+    <div class="eyebrow">Toolbox</div>
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="skill-grid">
+      <div class="skill-cat">
+        <h3>Languages</h3>
+        <div class="chip-row">
+          <span class="chip">Python</span><span class="chip">C</span><span class="chip">C++</span><span class="chip">Java</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>Deep Learning</h3>
+        <div class="chip-row">
+          <span class="chip">PyTorch</span><span class="chip">Keras</span><span class="chip">HuggingFace Transformers</span><span class="chip">Scikit-learn</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>Computer Vision</h3>
+        <div class="chip-row">
+          <span class="chip">OpenCV</span><span class="chip">PIL</span><span class="chip">torchvision</span><span class="chip">Albumentations</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>Data & Computing</h3>
+        <div class="chip-row">
+          <span class="chip">NumPy</span><span class="chip">Pandas</span><span class="chip">Matplotlib</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>Research Infrastructure</h3>
+        <div class="chip-row">
+          <span class="chip">Git/GitHub</span><span class="chip">LaTeX</span><span class="chip">CUDA</span><span class="chip">Colab</span><span class="chip">Kaggle</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>Core CS</h3>
+        <div class="chip-row">
+          <span class="chip">DSA</span><span class="chip">DBMS (MySQL)</span><span class="chip">Operating Systems</span><span class="chip">Networks</span><span class="chip">OOP</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AWARDS ================= -->
+<section id="awards">
+  <div class="wrap">
+    <div class="eyebrow">Recognition</div>
+    <h2 class="section-title">Honors & Awards</h2>
+    <div class="award-list">
+      <div class="award"><span class="a-name">Summa Cum Laude Scholastic Award — UIU</span><span class="a-date">Feb 2024</span></div>
+      <div class="award"><span class="a-name">Best Presentation Award, Session-242 — ICCIT 2022</span><span class="a-date">Dec 2022</span></div>
+      <div class="award"><span class="a-name">Merit-based Tuition Fee Waiver (Top 1% of cohort) — UIU</span><span class="a-date">2018–2022</span></div>
+      <div class="award"><span class="a-name">1st Position, CSE Project Show — "Musicity"</span><span class="a-date">Spring 2021</span></div>
+      <div class="award"><span class="a-name">3rd Position, CSE Project Show — "MixAugmentor and RePair"</span><span class="a-date">Summer 2022</span></div>
+      <div class="award"><span class="a-name">9th of 37 Teams, Intra-University AI Contest — UIU</span><span class="a-date">Jun 2022</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT / FOOTER ================= -->
+<section id="contact" class="section-alt">
+  <div class="wrap contact-wrap">
+    <div>
+      <div class="eyebrow">Get in Touch</div>
+      <h2 class="section-title" style="margin-bottom:8px;">Let's talk research.</h2>
+      <p style="max-width:44ch;">Open to PhD opportunities in computer vision, medical imaging,
+      and vision-language(-action) modeling. Reach out via email or LinkedIn.</p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:mhaque182055@bscse.uiu.ac.bd">Email</a>
+      <a href="https://linkedin.com/in/md-enamul-haque-5bb2aa209/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://sites.google.com/view/mdenamulhaque" target="_blank" rel="noopener">Website</a>
+      <a href="#" target="_blank" rel="noopener">Google Scholar</a>
+      <a href="#" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> Md Enamul Haque. Built with plain HTML/CSS/JS — fork and customize freely.
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backBtn.classList.toggle('show', window.scrollY > 500);
+  });
+  backBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+</script>
+</body>
+</html>
