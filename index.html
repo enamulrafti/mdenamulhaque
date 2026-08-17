@@ -105,7 +105,7 @@ p{color:var(--ink-soft);}
 
 .hero-name{font-size:clamp(34px,5.2vw,54px); line-height:1.05; margin-bottom:14px;}
 .hero-role{font-size:17px; color:var(--accent); font-weight:600; margin-bottom:18px;}
-.hero-desc{max-width:52ch; font-size:15.5px; margin-bottom:28px;}
+.hero-desc{max-width:52ch; font-size:15.5px; margin-bottom:28px; text-align:justify;}
 .hero-tags{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:32px;}
 .tag{
   font-family:var(--font-mono); font-size:11.5px; padding:5px 10px;
@@ -136,27 +136,43 @@ p{color:var(--ink-soft);}
 }
 
 /* ---------- About ---------- */
-.about-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px;}
-@media (max-width:760px){.about-grid{grid-template-columns:1fr;}}
-.about-text p{margin-bottom:14px; font-size:15px;}
-.about-text strong{color:var(--ink);}
-.stat-list{display:flex; flex-direction:column; gap:0; border-top:1px solid var(--line);}
-.stat-row{
-  display:flex; justify-content:space-between; align-items:baseline;
-  padding:16px 0; border-bottom:1px solid var(--line);
+.about-layout{
+  display:grid; grid-template-columns:1fr 220px; gap:48px; align-items:start;
 }
-.stat-row .num{font-family:var(--font-display); font-size:26px; color:var(--accent);}
-.stat-row .label{font-size:13px; color:var(--ink-soft); text-align:right; max-width:60%;}
+@media (max-width:760px){ .about-layout{grid-template-columns:1fr;} }
+.about-text p{margin-bottom:14px; font-size:15px; text-align:justify;}
+.about-text strong{color:var(--ink);}
+.stat-col{
+  display:flex; flex-direction:column; gap:1px;
+  background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
+}
+.stat-box{
+  background:var(--card); padding:18px 16px; text-align:left;
+  display:flex; flex-direction:column; gap:4px;
+}
+.stat-box .num{font-family:var(--font-display); font-size:26px; color:var(--accent);}
+.stat-box .label{font-size:12px; color:var(--ink-soft); line-height:1.4;}
 
 /* ---------- Research interests ---------- */
-.interest-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
-@media (max-width:760px){.interest-grid{grid-template-columns:1fr;}}
-.interest-card{
-  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
-  padding:24px; border-top:2px solid var(--accent-2);
+.interest-list{display:flex; flex-direction:column;}
+.interest-item{
+  display:grid; grid-template-columns:80px 1fr; gap:24px;
+  padding:32px 0; border-bottom:1px solid var(--line);
 }
-.interest-card h3{font-size:16px; margin-bottom:8px; font-family:var(--font-body); font-weight:700;}
-.interest-card p{font-size:13.5px;}
+.interest-item:first-child{border-top:1px solid var(--line);}
+.interest-num{
+  font-family:var(--font-display); font-size:40px; font-weight:400;
+  color:var(--accent-2); line-height:1;
+}
+.interest-item h3{
+  font-size:19px; font-family:var(--font-body); font-weight:700;
+  color:var(--ink); margin-bottom:8px;
+}
+.interest-item p{font-size:14.5px;  text-align:justify;}
+@media (max-width:600px){
+  .interest-item{grid-template-columns:48px 1fr; gap:14px;}
+  .interest-num{font-size:28px;}
+}
 
 /* ---------- Publications ---------- */
 .pub-list{display:flex; flex-direction:column; gap:0;}
@@ -174,6 +190,7 @@ p{color:var(--ink-soft);}
 }
 .status-published{background:#e7efe4; color:#3f6b32;}
 .status-review{background:#f3ecd9; color:#8a6a1f;}
+.status-ongoing{background:#e4ecf3; color:#1d3557;}
 .pub-links a{font-size:12.5px; color:var(--accent); font-weight:600; margin-right:14px;}
 .pub-links a:hover{text-decoration:underline;}
 
@@ -236,6 +253,7 @@ footer{
       <li><a href="#about">About</a></li>
       <li><a href="#research">Research</a></li>
       <li><a href="#publications">Publications</a></li>
+      <li><a href="#ongoing">Ongoing</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#teaching">Teaching</a></li>
       <li><a href="#skills">Skills</a></li>
@@ -248,56 +266,68 @@ footer{
 <header class="hero" id="top">
   <div class="hero-inner">
     <div>
-      <div class="eyebrow">Prospective PhD Applicant</div>
+      <div class="eyebrow">Prospective Graduate Student</div>
       <h1 class="hero-name">Md Enamul Haque</h1>
-      <div class="hero-role">Lecturer, Dept. of CSE, United International University</div>
+      <!-- <div class="hero-role">Lecturer, Dept. of CSE, United International University</div> -->
       <p class="hero-desc">
-        I work on attention-based deep learning for medical imaging and computer vision —
-        segmentation, detection, classification, and vision-language(-action) models —
-        with an emphasis on efficient, interpretable models for resource-constrained deployment.
+        I work at the intersection of computer vision and efficient multimodal learning:
+        building compact, multi-task architectures and vision-language(-action) models:
+        with an emphasis on efficient, interpretable systems for real-world deployment.
       </p>
       <div class="hero-tags">
-        <span class="tag">Medical Image Segmentation</span>
-        <span class="tag">Object Detection</span>
-        <span class="tag">Vision-Language Models</span>
-        <span class="tag">Attention Mechanisms</span>
-        <span class="tag">Model Compression</span>
+        <span class="tag">Computer Vision</span>
+        <span class="tag">Efficient Deep Learning</span>
+        <span class="tag">Multimodal Learning</span>
+        <span class="tag">Vision-Language(-Action) Models & LLMs</span>
       </div>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#publications">View Publications</a>
         <a class="btn btn-ghost" href="mailto:mhaque182055@bscse.uiu.ac.bd">Get in Touch</a>
-        <a class="btn btn-ghost" href="/cv.pdf">Download CV</a>
+        <a class="btn btn-ghost" href="assets/cv.pdf">Download CV</a>
       </div>
     </div>
     <div class="hero-photo-wrap">
       <div class="hero-photo-frame"></div>
       <!-- Replace src below with your photo, e.g. assets/photo.jpg -->
-      <img class="hero-photo" src="portfolio/assets/p1.jpg" alt="Portrait of Md Enamul Haque">
+      <figure style="margin:0;">
+        <img class="hero-photo" src="assets/p1.jpg" alt="Portrait of Md Enamul Haque">
+  <figcaption style="text-align:center; font-family:var(--font-mono); font-size:12px; color:var(--ink-soft); margin-top:10px;">
+    At 7th Convocation 2024, United International University, Dhaka, Bangladesh.
+  </figcaption>
+      </figure>
     </div>
   </div>
 </header>
 
 <!-- ================= ABOUT ================= -->
 <section id="about">
-  <div class="wrap about-grid">
-    <div class="about-text">
-      <div class="eyebrow">About</div>
-      <h2 class="section-title">Background</h2>
-      <p>I am a <strong>Lecturer</strong> in the Department of Computer Science and Engineering at
-      United International University (UIU), Dhaka, Bangladesh, where I have taught 13 distinct
-      courses across 8 trimesters since 2024. I completed my B.Sc. in CSE at UIU with a CGPA of
-      3.94/4.00 (Top 1%, Summa Cum Laude).</p>
-      <p>My research centers on <strong>attention-based deep learning</strong> for medical imaging
-      and computer vision, spanning disease detection, multi-task food/nutrition estimation,
-      biometric classification, and — most recently — <strong>efficient vision-language models</strong>.
-      I am applying to PhD programs to pursue this line of work further, with a focus on efficient
-      and interpretable vision-language-action systems for real-world, resource-constrained deployment.</p>
-    </div>
-    <div class="stat-list">
-      <div class="stat-row"><span class="num">8</span><span class="label">Peer-reviewed / under-review publications</span></div>
-      <div class="stat-row"><span class="num">3.94</span><span class="label">Undergraduate CGPA (Top 1%, out of 4.00)</span></div>
-      <div class="stat-row"><span class="num">13</span><span class="label">Distinct courses taught since 2024</span></div>
-      <div class="stat-row"><span class="num">2+</span><span class="label">Years as research assistant, IAR Lab, UIU</span></div>
+  <div class="wrap">
+    <div class="eyebrow">About</div>
+    <h2 class="section-title">Background</h2>
+    <div class="about-layout">
+      <div class="about-text">
+        <p><div class="about-text">
+  <p>I am an <strong>AI Researcher and Lecturer</strong> in the Department of Computer Science
+  & Engineering at United International University (UIU). I have taught 13 distinct courses
+  across 8 trimesters since joining as an Instructor in 2024, and was promoted to Lecturer in
+  November 2025. Alongside teaching, I work as a Research Assistant at the Institute for
+  Advanced Research (IAR) Lab, UIU, contributing to funded research on health informatics and
+  non-invasive diabetes management.</p>
+  <p>I completed my B.Sc. in Computer Science and Engineering at UIU with a CGPA of 3.94/4.00
+  (Top 1%, Summa Cum Laude), where my final year project explored data augmentation techniques
+  for text and image classification. Since then, my work has spanned attention-based deep
+  learning for disease detection, multi-task frameworks for food image analysis, and efficiency-oriented vision-language models. I am currently applying to graduate programs
+  to pursue this research further, with the goal of contributing to efficient, interpretable AI
+  systems that are practical to deploy in real-world, resource-constrained settings.</p>
+</div>
+      </div>
+
+      <div class="stat-col">
+        <!-- <div class="stat-box"><span class="num">8</span><span class="label">Peer-reviewed / under-review publications</span></div> -->
+        <div class="stat-box"><span class="num">3.94</span><span class="label">Undergraduate CGPA (Top 1%, out of 4.00)</span></div>
+        <div class="stat-box"><span class="num">13</span><span class="label">Distinct courses taught since 2024</span></div>
+        <div class="stat-box"><span class="num">2+</span><span class="label">Years as research assistant, IAR Lab, UIU</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -307,36 +337,32 @@ footer{
   <div class="wrap">
     <div class="eyebrow">Focus Areas</div>
     <h2 class="section-title">Research Interests</h2>
-    <div class="interest-grid">
-      <div class="interest-card">
-        <h3>Vision-Language(-Action) Models</h3>
-        <p>Efficient and interpretable multimodal architectures, including attention pruning
-        for energy-efficient inference.</p>
+
+    <div class="interest-list">
+      <div class="interest-item">
+        <span class="interest-num">01</span>
+        <div>
+          <h3>Efficient Machine Learning & Deep Learning</h3>
+          <p>Designing compressed, attention-guided architectures that reduce compute and memory cost without sacrificing performance, for deployment in resource-constrained settings.</p>
+        </div>
       </div>
-      <div class="interest-card">
-        <h3>Medical Imaging & Diagnostics</h3>
-        <p>Attention-based CNNs for disease detection (e.g., monkeypox, fish pathogens) and
-        clinical decision support.</p>
+
+      <div class="interest-item">
+        <span class="interest-num">02</span>
+        <div>
+          <h3>Multi-Task & Multimodal Learning</h3>
+          <p>Building unified frameworks that jointly reason across multiple tasks and data
+          modalities, rather than solving problems in isolation.</p>
+        </div>
       </div>
-      <div class="interest-card">
-        <h3>Model Compression & XAI</h3>
-        <p>Efficiency-oriented architectures and explainable AI for deployment under
-        real-world compute constraints.</p>
-      </div>
-      <div class="interest-card">
-        <h3>Multi-Task Segmentation & Classification</h3>
-        <p>Joint instance segmentation, fine-grained classification, and regression, e.g.
-        BanglaFoodNet on the FoodBD dataset.</p>
-      </div>
-      <div class="interest-card">
-        <h3>Object Detection</h3>
-        <p>Hybrid detector backbones (YOLOv8 + EfficientNet) with attention for challenging
-        conditions such as adverse weather.</p>
-      </div>
-      <div class="interest-card">
-        <h3>Health Informatics</h3>
-        <p>Non-invasive prediction from food-intake and activity data, including
-        dataset construction (FoodBD).</p>
+
+      <div class="interest-item">
+        <span class="interest-num">03</span>
+        <div>
+          <h3>Vision-Language(-Action) Models & LLMs</h3>
+          <p>Developing and adapting large multimodal and language models for grounded,
+          real-world understanding and decision-making.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -352,6 +378,15 @@ footer{
     <div class="eyebrow">Selected Work</div>
     <h2 class="section-title">Publications</h2>
     <div class="pub-list" id="pubList">
+
+      <div class="pub">
+        <div class="pub-index">09</div>
+        <div>
+          <div class="pub-title">Automated Detection of Vascular Discontinuities in Coronary Angiography Using a Hybrid Deep Learning-Classical Vesselness Framework</div>
+          <div class="pub-meta">Maroya, F. Y., Das, S., Shihab, M. S. R., Bhuiyan, M. H. A. J., Mim, N. S., <strong>Haque, M. E.</strong>, & Huda, M. N. — ICCIT 2026</div>
+          <span class="pub-status status-review">Under Review</span>
+        </div>
+      </div>
 
       <div class="pub">
         <div class="pub-index">08</div>
@@ -433,6 +468,79 @@ footer{
   </div>
 </section>
 
+<!-- ================= ONGOING RESEARCH & SUPERVISION ================= -->
+<!--
+  TO ADD A NEW PROJECT: copy one .pub block inside #ongoingList and edit its contents.
+-->
+<section id="ongoing" class="section-alt">
+  <div class="wrap">
+    <div class="eyebrow">Current Work</div>
+    <h2 class="section-title">Ongoing Research & Supervision</h2>
+    <div class="pub-list" id="ongoingList">
+
+    
+      <div class="pub">
+        <div class="pub-index">01</div>
+        <div>
+          <div class="pub-title">EcoVLM: A Diagnostic and Optimization Framework for Energy-Efficient Vision-Language Model Inference</div>
+          <div class="pub-meta">Final Year Design Project (FYDP) · Spring 2026 · Preliminary Findings Submitted for Review at ICCIT 2026 </div>
+          <div class="pub-meta">Supervisor: Prof. Dr. Md. Motaharul Islam (Dept. of CSE, UIU) &nbsp;·&nbsp; Co-supervisor: Md. Enamul Haque</div>
+          <div class="pub-meta">Team: Jerin Tasnim Moon, MD. Minhajur Rahman, Mostafa Mir Rafi, Jannatul Fiaza, MD. Nahian Hasan Nokib</div>
+          <span class="pub-status status-ongoing">Ongoing</span>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-index">02</div>
+        <div>
+          <div class="pub-title">Automated Detection of Vascular Discontinuities in Coronary Angiography Using a Hybrid Deep Learning-Classical Vesselness Framework</div>
+          <div class="pub-meta">Final Year Design Project (FYDP) · Spring 2026 · Preliminary Findings Submitted for Review at ICCIT 2026</div>
+          <div class="pub-meta">Supervisor: Dr. Mohammad Nurul Huda (Dept. of CSE, UIU) &nbsp;·&nbsp; Co-supervisor: Md. Enamul Haque</div>
+          <div class="pub-meta">Team: Fatema Yesmin Maroya, Shurav Das, Md. Shahriar Rahman Shihab, Md. Hasin Al Jubaier Bhuiyan, Nadia Sultana Mim</div>
+          <span class="pub-status status-ongoing">Ongoing</span>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-index">03</div>
+        <div>
+          <div class="pub-title">AI-Driven Dynamic Resource Management for Vehicular Edge Computing with Joint Offloading, Load Balancing, and Handover</div>
+          <div class="pub-meta">Final Year Design Project (FYDP) · Spring 2026</div>
+          <div class="pub-meta">Supervisor: Dr. Muhammad Nomani Kabir (Dept. of CSE, UIU) &nbsp;·&nbsp; Co-supervisor: Md. Enamul Haque</div>
+          <div class="pub-meta">Team: Arif Hossain, Md. Ashfaqur Rahman Ronggon, Mst Jannatul Naima, Sultannur Rahman Shuvo, Rezwan Al Shahriar, Md. Sahriar Hossain</div>
+          <span class="pub-status status-ongoing">Ongoing</span>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-index">04</div>
+        <div>
+          <div class="pub-title">Can LLMs Feel the Metaphor? A Step-Level Dataset and Benchmark for Figurative Emotion Reasoning in Bangla Poetry</div>
+          <!-- <div class="pub-meta">Final Year Design Project (FYDP) · Spring 2026 · Preliminary Findings Submitted for Review at ICCIT 2026 </div> -->
+          <div class="pub-meta">Supervisor: Prof. Dr. Swakkhar Shatabda (Dept. of CSE, Brac University, Dhaka, Bangladesh)</div>
+          <div class="pub-meta">Team: Md. Enamul Haque, Prottay Debnath, Abu Huraira Rahi, Sanjana Farhin Astha, S.M. Jishanul Islam  </div>
+          <span class="pub-status status-ongoing">Manuscript in Preparation</span>
+        </div>
+      </div>
+
+
+      <div class="pub">
+        <div class="pub-index">05</div>
+        <div>
+          <div class="pub-title">A Novel User Authentication System Based on User Finger Vein</div>
+          <div class="pub-meta">Final Year Design Project (FYDP) · Summer 2026</div>
+          <div class="pub-meta">Supervisor: Dr. Muhammad Nomani Kabir (Dept. of CSE, UIU) &nbsp;·&nbsp; Co-supervisor: Md. Enamul Haque</div>
+          <div class="pub-meta">Team: Meherunnesa Setu, Mohammad Sifat, Afia Ibnat Anika</div>
+          <span class="pub-status status-ongoing">Ongoing</span>
+        </div>
+      </div>
+
+      
+
+    </div>
+  </div>
+</section>
+
 <!-- ================= EXPERIENCE ================= -->
 <section id="experience" class="section-alt">
   <div class="wrap">
@@ -458,11 +566,12 @@ footer{
         </ul>
       </div>
       <div class="tl-item">
-        <div class="tl-date">May 2018 – Oct 2022</div>
+        <div class="tl-date">May 2021 – Oct 2022</div>
         <div class="tl-role">B.Sc. in Computer Science & Engineering</div>
         <div class="tl-org">United International University · CGPA 3.94/4.00, Summa Cum Laude</div>
         <ul>
           <li>Final year project: MixAugmentor and RePair — text and image data augmentation.</li>
+          <li>Proposed MixAugmentor for text augmentation using back translation, synonym replacement, and cosine-similarity-based word replacement, and RePair for image augmentation using random erasing and sample pairing to generate diverse synthetic samples for improved classification.  </li>
         </ul>
       </div>
     </div>
@@ -479,21 +588,36 @@ footer{
     <div class="eyebrow">Teaching</div>
     <h2 class="section-title">Teaching Experience</h2>
     <div class="timeline">
+
       <div class="tl-item">
         <div class="tl-date">Nov 2025 – Present</div>
-        <div class="tl-role">Lecturer, Dept. of CSE</div>
-        <div class="tl-org">United International University (promoted from Instructor, Nov 2025)</div>
+        <div class="tl-role">Lecturer</div>
+        <div class="tl-org">Dept. of Computer Science and Engineering, United International University (promoted from Instructor, Nov 2025)</div>
+        <div class="tl-org"></div>
         <ul>
-          <li>13 distinct courses across 8 trimesters (Spring 2024 – Summer 2026), spanning core CS theory and systems.</li>
-          <li>Data Structures & Algorithms I/II, Database Management Systems, OS Lab, Computer Networks Lab, OOP, Discrete Math, Digital Logic Design, System Analysis & Design.</li>
+          <li>Taught 13 distinct course offerings across 3 trimesters (Fall 2025 – Summer 2026), covering programming, data structures and algorithms, databases, operating systems, computer networks, software engineering, and foundational computer science.</li>
+          <li>Managed end-to-end course delivery, including lecture and laboratory instruction, preparation of teaching materials and assessments, grading and evaluation, student counseling, and coordination of course-related academic activities.</li>
+          <li>Courses taught include Data Structures & Algorithms I/II, Database Management Systems, Operating Systems, Computer Networks, Object-Oriented Programming, Structured Programming, Discrete Mathematics, Digital Logic Design, Introduction to Computer Systems, and System Analysis & Design.</li>
         </ul>
       </div>
+
+      <div class="tl-item">
+        <div class="tl-date">Jan 2024 – Oct 2025</div>
+        <div class="tl-role">Instructor (Contractual Lecturer)</div>
+        <div class="tl-org">Dept. of Computer Science and Engineering, United International University </div>
+        <div class="tl-org"></div>
+        <ul>
+          <li>Taught 6 distinct laboratory courses across 5 trimesters (Spring 2024 – Summer 2025), covering structured programming, object-oriented programming, data structures and algorithms, databases, computer networks, and system analysis & design.</li>
+          <li>Conducted laboratory sessions, prepared and demonstrated programming and practical exercises, evaluated lab performance and assignments, provided individualized student guidance, and supported the effective delivery of course activities.</li>
+        </ul>
+      </div>
+
       <div class="tl-item">
         <div class="tl-date">Nov 2022 – Dec 2023</div>
         <div class="tl-role">Instructor</div>
         <div class="tl-org">Dept. of CS & Technology, Educity-Bangladesh</div>
         <ul>
-          <li>Delivered academic and industry-oriented instruction to Diploma-in-Engineering students.</li>
+          <li>Delivered academic and industry-oriented instruction to Diploma-in-Engineering students in Data Structures & Algorithms, Database Management Systems, Java, Python, Operating Systems, Software Engineering, Network Administration, and Computer Peripherals & Interfacing.</li>
         </ul>
       </div>
       <div class="tl-item">
@@ -501,7 +625,7 @@ footer{
         <div class="tl-role">Undergraduate Assistant</div>
         <div class="tl-org">Dept. of CSE, UIU</div>
         <ul>
-          <li>Structured Programming Lab, Microprocessor/Microcontroller & Interfacing Lab, Computer Networks Lab, Electronics Lab.</li>
+          <li>Assisted with laboratory instruction, student support, demonstrations, and assessment-related activities for Structured Programming, Microprocessor/Microcontroller & Interfacing, Computer Networks, and Electronics.</li>
         </ul>
       </div>
     </div>
@@ -517,37 +641,37 @@ footer{
       <div class="skill-cat">
         <h3>Languages</h3>
         <div class="chip-row">
-          <span class="chip">Python</span><span class="chip">C</span><span class="chip">C++</span><span class="chip">Java</span>
+          <span class="chip">Python, C, C++, Java</span>
         </div>
       </div>
       <div class="skill-cat">
         <h3>Deep Learning</h3>
         <div class="chip-row">
-          <span class="chip">PyTorch</span><span class="chip">Keras</span><span class="chip">HuggingFace Transformers</span><span class="chip">Scikit-learn</span>
+          <span class="chip">PyTorch, TensorFlow, Keras, HuggingFace Transformers, Scikit-learn</span>
         </div>
       </div>
       <div class="skill-cat">
         <h3>Computer Vision</h3>
         <div class="chip-row">
-          <span class="chip">OpenCV</span><span class="chip">PIL</span><span class="chip">torchvision</span><span class="chip">Albumentations</span>
+          <span class="chip">OpenCV, PIL, torchvision, Albumentations</span>
         </div>
       </div>
       <div class="skill-cat">
         <h3>Data & Computing</h3>
         <div class="chip-row">
-          <span class="chip">NumPy</span><span class="chip">Pandas</span><span class="chip">Matplotlib</span>
+          <span class="chip">NumPy, Pandas, Matplotlib</span>
         </div>
       </div>
       <div class="skill-cat">
         <h3>Research Infrastructure</h3>
         <div class="chip-row">
-          <span class="chip">Git/GitHub</span><span class="chip">LaTeX</span><span class="chip">CUDA</span><span class="chip">Colab</span><span class="chip">Kaggle</span>
+          <span class="chip">Git/GitHub, LaTex, CUDA, Colab, Kaggle</span>
         </div>
       </div>
       <div class="skill-cat">
         <h3>Core CS</h3>
         <div class="chip-row">
-          <span class="chip">DSA</span><span class="chip">DBMS (MySQL)</span><span class="chip">Operating Systems</span><span class="chip">Networks</span><span class="chip">OOP</span>
+          <span class="chip">DSA, DBMS (MySQL), Linux Shell Script, Networks, OOOP </Script>
         </div>
       </div>
     </div>
@@ -576,21 +700,21 @@ footer{
     <div>
       <div class="eyebrow">Get in Touch</div>
       <h2 class="section-title" style="margin-bottom:8px;">Let's talk research.</h2>
-      <p style="max-width:44ch;">Open to PhD opportunities in computer vision, medical imaging,
-      and vision-language(-action) modeling. Reach out via email or LinkedIn.</p>
+      <p style="max-width:44ch;">Open to graduate studies opportunities in computer vision, efficient multimodal
+      learning, and vision-language(-action) modeling. </p>
     </div>
     <div class="contact-links">
       <a href="mailto:mhaque182055@bscse.uiu.ac.bd">Email</a>
       <a href="https://linkedin.com/in/md-enamul-haque-5bb2aa209/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://sites.google.com/view/mdenamulhaque" target="_blank" rel="noopener">Website</a>
-      <a href="#" target="_blank" rel="noopener">Google Scholar</a>
-      <a href="#" target="_blank" rel="noopener">GitHub</a>
+      <!-- <a href="https://sites.google.com/view/mdenamulhaque" target="_blank" rel="noopener">Website</a> -->
+      <a href="https://scholar.google.com/citations?user=cWvx2jYAAAAJ&hl=en&authuser=1" target="_blank" rel="noopener">Google Scholar</a>
+      <a href="https://github.com/enamulrafti" target="_blank" rel="noopener">GitHub</a>
     </div>
   </div>
 </section>
 
 <footer>
-  © <span id="year"></span> Md Enamul Haque. Built with plain HTML/CSS/JS — fork and customize freely.
+  © <span id="year"></span> Md Enamul Haque.
 </footer>
 
 <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
