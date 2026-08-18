@@ -6,7 +6,8 @@
 <title>Md Enamul Haque — Portfolio</title>
 <meta name="description" content="Md Enamul Haque — Computer Vision & Deep Learning Researcher">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"> -->
+ <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;500&display=swap" rel="stylesheet">
 <style>
 
 :root{
@@ -104,11 +105,26 @@ p{color:var(--ink-soft);}
 @media (max-width:820px){ .hero-inner{grid-template-columns:1fr;} }
 
 .hero-name{font-size:clamp(34px,5.2vw,54px); line-height:1.05; margin-bottom:14px;}
+.hero-name{ font-family:var(--font-mono); font-weight:500; letter-spacing:-0.02em; }
 .hero-role{font-size:17px; color:var(--accent); font-weight:600; margin-bottom:18px;}
 .hero-desc{max-width:52ch; font-size:15.5px; margin-bottom:28px; text-align:justify;}
 .hero-tags{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:32px;}
+.hero-name-bn{
+  font-family:'Noto Sans Bengali', var(--font-body);
+  font-size:0.7em;
+  font-weight:400;
+  color:var(--ink-soft);
+  letter-spacing:0;
+}
+.pronounce-btn{
+  background:none; border:none; cursor:pointer;
+  font-size:0.45em; vertical-align:middle; margin-left:4px;
+  padding:4px 6px; border-radius:50%; line-height:1;
+  transition:.2s;
+}
+.pronounce-btn:hover{background:var(--accent-soft);}
 .tag{
-  font-family:var(--font-mono); font-size:11.5px; padding:5px 10px;
+  font-family:var(--font-mono); font-size:14px; padding:5px 10px;
   background:var(--accent-soft); color:var(--accent); border-radius:var(--radius);
   border:1px solid rgba(29,53,87,0.08);
 }
@@ -147,8 +163,8 @@ p{color:var(--ink-soft);}
   background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
 }
 .stat-box{
-  background:var(--card); padding:18px 16px; text-align:left;
-  display:flex; flex-direction:column; gap:4px;
+  background:var(--card); padding:16px 14px; text-align:left;
+  display:flex; flex-direction:column; gap:2px;
 }
 .stat-box .num{font-family:var(--font-display); font-size:26px; color:var(--accent);}
 .stat-box .label{font-size:12px; color:var(--ink-soft); line-height:1.4;}
@@ -172,6 +188,17 @@ p{color:var(--ink-soft);}
 @media (max-width:600px){
   .interest-item{grid-template-columns:48px 1fr; gap:14px;}
   .interest-num{font-size:28px;}
+}
+
+.interest-sublist{list-style:none; padding:0; margin-top:6px;}
+.interest-sublist li{
+  font-size:14.5px; color:var(--ink-soft); text-align:justify;
+  padding:10px 0 10px 18px; border-left:2px solid var(--accent-soft);
+  margin-bottom:2px;
+}
+.interest-sublist li strong{
+  color:var(--accent); font-family:var(--font-mono); font-size:11.5px;
+  letter-spacing:.03em; text-transform:uppercase; display:block; margin-bottom:3px;
 }
 
 /* ---------- Publications ---------- */
@@ -210,12 +237,36 @@ p{color:var(--ink-soft);}
 .tl-item li{margin-bottom:4px;}
 
 /* ---------- Skills ---------- */
-.skill-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:26px 40px;}
-@media (max-width:760px){.skill-grid{grid-template-columns:1fr;}}
-.skill-cat h3{font-size:13px; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.06em; color:var(--accent); margin-bottom:10px;}
+.skills-columns{display:grid; grid-template-columns:1fr 1fr; gap:48px;}
+@media (max-width:800px){ .skills-columns{grid-template-columns:1fr;} }
+.skills-col{border-top:2px solid var(--accent-2); padding-top:20px;}
+.skills-col-header{margin-bottom:20px;}
+.skills-col-tag{
+  font-family:var(--font-mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--accent); background:var(--accent-soft); padding:3px 9px; border-radius:3px;
+  display:inline-block; margin-bottom:8px;
+}
+.skills-col-tag-alt{color:#6b5a1e; background:#f3ecd9;}
+.skills-col h3{font-size:18px; font-family:var(--font-body); font-weight:700;}
+.skill-cat{margin-bottom:22px;}
+.skill-cat h4{
+  font-size:12px; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.05em;
+  color:var(--ink-soft); margin-bottom:9px; font-weight:500;
+}
+
+.skills-columns{display:grid; grid-template-columns:1fr 1fr; gap:48px;}
+@media (max-width:800px){ .skills-columns{grid-template-columns:1fr;} }
+.skills-col h3{font-size:18px; font-family:var(--font-body); font-weight:700; margin-bottom:22px;}
+.skill-row{padding:14px 0; border-bottom:1px;}
+.skill-row:last-child{border-bottom:none;}
+.skill-row h4{
+  font-size:11.5px; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.05em;
+  color:var(--ink-soft); margin-bottom:5px; font-weight:500;
+}
+.skill-row p{font-size:14px; color:var(--ink); line-height:1.5;}
 .chip-row{display:flex; flex-wrap:wrap; gap:7px;}
 .chip{
-  font-size:12.5px; padding:6px 11px; background:var(--card); border:1px solid var(--line);
+  font-size:12.5px; padding:6px 11px; background:var(--card); border:1px;
   border-radius:20px; color:var(--ink-soft);
 }
 
@@ -267,13 +318,18 @@ footer{
   <div class="hero-inner">
     <div>
       <div class="eyebrow">Prospective Graduate Student</div>
-      <h1 class="hero-name">Md Enamul Haque</h1>
+      <h1 class="hero-name">
+  Md Enamul Haque
+  <span class="hero-name-bn">(মোঃ এনামুল হক)</span>
+  <button class="pronounce-btn" onclick="document.getElementById('namePronunciation').play()" aria-label="Hear pronunciation" title="Hear pronunciation">[🔊]</button>
+<audio id="namePronunciation" src="assets/name.mp3" preload="none"></audio>
+</h1>
       <!-- <div class="hero-role">Lecturer, Dept. of CSE, United International University</div> -->
       <p class="hero-desc">
-        I work at the intersection of computer vision and efficient multimodal learning:
-        building compact, multi-task architectures and vision-language(-action) models:
-        with an emphasis on efficient, interpretable systems for real-world deployment.
-      </p>
+  I design attention-guided, compute-efficient deep learning systems for biomedical
+  imaging, aquaculture, and biometrics and extend this efficiency-first approach toward
+  multi-task multimodal learning and vision-language(-action) models for real-world deployment.
+</p>
       <div class="hero-tags">
         <span class="tag">Computer Vision</span>
         <span class="tag">Efficient Deep Learning</span>
@@ -281,7 +337,7 @@ footer{
         <span class="tag">Vision-Language(-Action) Models & LLMs</span>
       </div>
       <div class="hero-cta">
-        <a class="btn btn-primary" href="#publications">View Publications</a>
+        <a class="btn btn-ghost" href="#publications">View Publications</a>
         <a class="btn btn-ghost" href="mailto:mhaque182055@bscse.uiu.ac.bd">Get in Touch</a>
         <a class="btn btn-ghost" href="assets/cv.pdf">Download CV</a>
       </div>
@@ -310,8 +366,8 @@ footer{
   <p>I am an <strong>AI Researcher and Lecturer</strong> in the Department of Computer Science
   & Engineering at United International University (UIU). I have taught 13 distinct courses
   across 8 trimesters since joining as an Instructor in 2024, and was promoted to Lecturer in
-  November 2025. Alongside teaching, I work as a Research Assistant at the Institute for
-  Advanced Research (IAR) Lab, UIU, contributing to funded research on health informatics and
+  November 2025. Alongside teaching, I work as a Research Assistant at IAR, UIU: Institute for
+  Advanced Research, contributing to funded research on health informatics and
   non-invasive diabetes management.</p>
   <p>I completed my B.Sc. in Computer Science and Engineering at UIU with a CGPA of 3.94/4.00
   (Top 1%, Summa Cum Laude), where my final year project explored data augmentation techniques
@@ -338,32 +394,69 @@ footer{
     <div class="eyebrow">Focus Areas</div>
     <h2 class="section-title">Research Interests</h2>
 
-    <div class="interest-list">
-      <div class="interest-item">
-        <span class="interest-num">01</span>
-        <div>
-          <h3>Efficient Machine Learning & Deep Learning</h3>
-          <p>Designing compressed, attention-guided architectures that reduce compute and memory cost without sacrificing performance, for deployment in resource-constrained settings.</p>
-        </div>
-      </div>
+<div class="interest-item">
+  <span class="interest-num">01</span>
+  <div>
+    <h3>Efficient Machine Learning & Deep Learning</h3>
+    <ul class="interest-sublist">
+      <li><strong>Method:</strong> Attention-guided architectural design combined with structured
+      pruning/compression to reduce inference cost while preserving task accuracy.</li>
+      <li><strong>Domain:</strong> Biomedical imaging, aquaculture disease surveillance, and
+      biometric authentication — settings where labeled data and compute budgets are limited.</li>
+      <li><strong>Application/Experience:</strong> Designed attention-based CNNs for monkeypox
+      lesion classification, Nile Tilapia pathogen detection, and finger-vein biometric
+      recognition, using attention both for discriminative feature localization and to guide
+      downstream pruning.</li>
+      <li><strong>Specific Interest:</strong> Extending attention-guided pruning to
+      vision-language models, to reduce inference latency for large multimodal architectures
+      without proportional accuracy loss.</li>
+    </ul>
+  </div>
+</div>
 
-      <div class="interest-item">
-        <span class="interest-num">02</span>
-        <div>
-          <h3>Multi-Task & Multimodal Learning</h3>
-          <p>Building unified frameworks that jointly reason across multiple tasks and data
-          modalities, rather than solving problems in isolation.</p>
-        </div>
-      </div>
+<div class="interest-item">
+  <span class="interest-num">02</span>
+  <div>
+    <h3>Multi-Task & Multimodal Learning</h3>
+    <ul class="interest-sublist">
+      <li><strong>Method:</strong> Unified multi-task architectures with a shared backbone and
+      task-specific heads, optimized jointly via uncertainty-weighted loss balancing across
+      heterogeneous output types (categorical, continuous, and spatial).</li>
+      <li><strong>Domain:</strong> Food image analysis, with structural relevance to clinical
+      multi-task settings involving joint categorical and continuous prediction.</li>
+      <li><strong>Application/Experience:</strong> Designed BanglaFoodNet (Swin-Tiny backbone,
+      CBAM-augmented FPN) for joint food image segmentation, classification, and
+      glycemic-load-aware nutrition estimation under a single shared representation.</li>
+      <li><strong>Specific Interest:</strong> Extending this uncertainty-weighted multi-task
+      framework to clinical imaging tasks such as joint diagnosis and severity estimation, where
+      a shared encoder must similarly support heads with differing label types and risk
+      profiles.</li>
+    </ul>
+  </div>
+</div>
 
-      <div class="interest-item">
-        <span class="interest-num">03</span>
-        <div>
-          <h3>Vision-Language(-Action) Models & LLMs</h3>
-          <p>Developing and adapting large multimodal and language models for grounded,
-          real-world understanding and decision-making.</p>
-        </div>
-      </div>
+<div class="interest-item">
+  <span class="interest-num">03</span>
+  <div>
+    <h3>Vision-Language(-Action) Models & LLMs</h3>
+    <ul class="interest-sublist">
+      <li><strong>Method:</strong> Adapting large vision-language models for grounded,
+task-driven reasoning, integrated with the attention-guided compression techniques described
+above (Efficient ML & Deep Learning) to enable low-latency multimodal inference.</li>
+      <li><strong>Domain:</strong> Currently vision-language model efficiency; extending toward
+      document understanding, low-resource OCR pipelines, and embodied vision-language-action
+      (VLA) settings.</li>
+      <li><strong>Application/Experience:</strong> Ongoing work on attention-pruning for
+      vision-language model inference, aimed at reducing computational cost for deployment-scale
+      VLM systems.</li>
+      <li><strong>Specific Interest:</strong> Extending efficiency-focused VLM
+      research toward VLA systems, where low-latency multimodal inference is a prerequisite for
+      real-time embodied control using document understanding and low-resource OCR as
+      intermediate grounding tasks before progressing to full embodied action generation.</li>
+    </ul>
+  </div>
+</div>
+
     </div>
   </div>
 </section>
@@ -637,42 +730,29 @@ footer{
   <div class="wrap">
     <div class="eyebrow">Toolbox</div>
     <h2 class="section-title">Technical Skills</h2>
-    <div class="skill-grid">
-      <div class="skill-cat">
-        <h3>Languages</h3>
-        <div class="chip-row">
-          <span class="chip">Python, C, C++, Java</span>
-        </div>
+
+    <div class="skills-columns">
+      <div class="skills-col">
+        <h3>Research & ML Engineering</h3>
+
+        <div class="skill-row"><h4>Languages</h4><p>Python, C++, C, Java</p></div>
+        <div class="skill-row"><h4>Deep Learning</h4><p>PyTorch, HuggingFace Transformers, Keras, Scikit-learn</p></div>
+        <div class="skill-row"><h4>Computer Vision</h4><p>OpenCV, torchvision, PIL, Albumentations</p></div>
+        <div class="skill-row"><h4>Data & Scientific Computing</h4><p>NumPy, Pandas, Matplotlib</p></div>
+        <div class="skill-row"><h4>Research Infrastructure</h4><p>Git/GitHub, LaTeX, CUDA, Google Colab, Kaggle</p></div>
       </div>
-      <div class="skill-cat">
-        <h3>Deep Learning</h3>
-        <div class="chip-row">
-          <span class="chip">PyTorch, TensorFlow, Keras, HuggingFace Transformers, Scikit-learn</span>
+
+      <div class="skills-col">
+        <h3>Teaching & Core CS</h3>
+
+        <div class="skill-row">
+          <h4>Courses Taught / TA-Ready</h4>
+          <p>Data Structures & Algorithms, Database Management Systems (MySQL), Operating
+          Systems, Computer Networks, Object-Oriented Programming (Java, JavaFX), Digital Logic
+          Design</p>
         </div>
-      </div>
-      <div class="skill-cat">
-        <h3>Computer Vision</h3>
-        <div class="chip-row">
-          <span class="chip">OpenCV, PIL, torchvision, Albumentations</span>
-        </div>
-      </div>
-      <div class="skill-cat">
-        <h3>Data & Computing</h3>
-        <div class="chip-row">
-          <span class="chip">NumPy, Pandas, Matplotlib</span>
-        </div>
-      </div>
-      <div class="skill-cat">
-        <h3>Research Infrastructure</h3>
-        <div class="chip-row">
-          <span class="chip">Git/GitHub, LaTex, CUDA, Colab, Kaggle</span>
-        </div>
-      </div>
-      <div class="skill-cat">
-        <h3>Core CS</h3>
-        <div class="chip-row">
-          <span class="chip">DSA, DBMS (MySQL), Linux Shell Script, Networks, OOOP </Script>
-        </div>
+        <div class="skill-row"><h4>Web & Applied Development</h4><p>Django, SpringBoot-Gradle</p></div>
+        <div class="skill-row"><h4>Embedded/Hardware (Coursework)</h4><p>Atmega32, Arduino, Proteus, Logisim</p></div>
       </div>
     </div>
   </div>
@@ -732,6 +812,18 @@ footer{
     backBtn.classList.toggle('show', window.scrollY > 500);
   });
   backBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+  function pronounceName(){
+  if(!('speechSynthesis' in window)){
+    alert('Speech playback is not supported in this browser.');
+    return;
+  }
+  const utterance = new SpeechSynthesisUtterance('মো এনামুল হক');
+  utterance.lang = 'bn-BD';
+  utterance.rate = 0.85;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(utterance);
+}
 </script>
 </body>
 </html>
